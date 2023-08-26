@@ -1,11 +1,12 @@
 import useFetch from "../../hooks/useFetch";
+import { Loader } from "../loader/loader";
 import "./featured.css";
 
 const Featured = () => {
   const { data, loading, error } = useFetch('hotels/countByCity?cities=berlin,madrid,london');
   return (
     <div className="featured">
-      {loading ? <h1>loading....</h1> :
+      {loading ? <Loader /> :
         <>
           <div className="featuredItem">
             <img

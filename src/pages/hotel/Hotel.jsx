@@ -16,6 +16,8 @@ import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
+import Login from "../login/Login";
+import { Loader } from "../../components/loader/loader";
 
 const Hotel = () => {
   const location = useLocation();
@@ -24,6 +26,7 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
 
   const { loading, data, error } = useFetch(`/hotels/find/${id}`)
 
@@ -43,7 +46,7 @@ const Hotel = () => {
     if (user) {
       setOpenModal(true);
     } else {
-      navigate("/login");
+      setOpenLoginModal(true);
     }
   }
 
@@ -68,7 +71,7 @@ const Hotel = () => {
     <div>
       <Navbar />
       <Header type="list" />
-      {loading ? "Loading" :
+      {loading ? <Loader /> :
         <div className="hotelContainer">
           {open && (
             <div className="slider">
@@ -142,6 +145,7 @@ const Hotel = () => {
         </div>
       }
       {openModal && <Reserve setOpen={setOpen} hotelId={id} />}
+      {openLoginModal && <Login setOpenLoginModal={setOpenLoginModal} />}
     </div>
   );
 };
