@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import AdminList from "./pages/adminList/AdminList";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import Single from "./pages/single/Single";
 
 function App() {
 
@@ -51,14 +52,6 @@ function App() {
               }
             />
             {/* <Route
-            path=":userId"
-            element={
-              <ProtectedRoute>
-                <Single />
-              </ProtectedRoute>
-            }
-          /> */}
-            {/* <Route
             path="new"
             element={
               <ProtectedRoute>
@@ -76,14 +69,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-            path=":productId"
-            element={
-              <ProtectedRoute>
-                <Single />
-              </ProtectedRoute>
-            }
-          /> */}
+            <Route
+              path=":productId"
+              element={
+                <ProtectedRoute>
+                  <Single />
+                </ProtectedRoute>
+              }
+            />
             {/* <Route
             path="new"
             element={
@@ -102,14 +95,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-            path=":productId"
-            element={
-              <ProtectedRoute>
-                <Single />
-              </ProtectedRoute>
-            }
-          /> */}
             {/* <Route
             path="new"
             element={
