@@ -74,7 +74,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
           onClick={() => setOpenModal(false)}
         />
         <span>Select your rooms:</span>
-        {data.map((item) => (
+        {data.length > 0 && data.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
               <div className="rTitle">{item.title}</div>

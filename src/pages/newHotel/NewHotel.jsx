@@ -11,7 +11,7 @@ const NewHotel = () => {
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
   const nav = useNavigate();
-  const { data, loading, error } = useFetch("/rooms");
+  const { data, loading } = useFetch("/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -108,7 +108,7 @@ const NewHotel = () => {
                 <select id="rooms" multiple onChange={handleSelect}>
                   {loading
                     ? "loading"
-                    : data &&
+                    : data.length > 0 &&
                     data.map((room) => (
                       <option key={room._id} value={room._id}>
                         {room.title}

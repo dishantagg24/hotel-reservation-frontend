@@ -111,7 +111,7 @@ const List = () => {
           </div>
           <div className="listResult">
             {loading ? <Loader /> : <>
-              {data.map((item) => {
+              {data.length > 0 && data.map((item) => {
                 return <SearchItem item={item} key={item._id} />
               })}
             </>

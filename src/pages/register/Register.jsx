@@ -1,5 +1,4 @@
-import { useContext, useState } from "react"
-import { AuthContext } from "../../context/AuthContext"
+import { useState } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,7 +14,7 @@ const Register = ({ setOpenRegisterModal }) => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/auth/register', credentials);
+            await axios.post('/auth/register', credentials);
             setOpenRegisterModal(false);
             navigate('/');
         } catch (error) {
