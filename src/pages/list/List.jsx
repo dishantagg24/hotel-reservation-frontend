@@ -19,7 +19,7 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
   const { dispatch } = useContext(SearchContext);
-  const { data, loading, reFetch } = useFetch(`hotels/?city=${destination}&min=${min || 0}&max=${max || 999}`)
+  const { data, loading, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/hotels/?city=${destination}&min=${min || 0}&max=${max || 999}`)
 
 
   const handleChange = (e) => {

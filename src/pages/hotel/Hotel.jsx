@@ -27,7 +27,7 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
-  const { loading, data } = useFetch(`/hotels/find/${id}`)
+  const { loading, data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/hotels/find/${id}`)
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
 

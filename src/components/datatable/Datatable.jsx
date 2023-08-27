@@ -10,7 +10,7 @@ const Datatable = ({ columns }) => {
   const nav = useNavigate();
   const path = location.pathname.split("/")[2];
   const [list, setList] = useState();
-  const { data, error } = useFetch(`/${path}`);
+  const { data, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/${path}`);
 
   useEffect(() => {
     let admin = localStorage.getItem("user");

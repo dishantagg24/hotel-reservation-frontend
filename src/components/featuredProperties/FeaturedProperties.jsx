@@ -4,7 +4,7 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
-  const { loading, data } = useFetch("hotels?featured=true&limit=3");
+  const { loading, data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/hotels?featured=true&limit=3`);
   return (
     <div className="fp">
       {loading ? <Loader /> : <>

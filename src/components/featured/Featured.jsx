@@ -3,7 +3,7 @@ import { Loader } from "../loader/loader";
 import "./featured.css";
 
 const Featured = () => {
-  const { data, loading } = useFetch('hotels/countByCity?cities=berlin,madrid,london');
+  const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/hotels/countByCity?cities=berlin,madrid,london`);
   return (
     <div className="featured">
       {loading ? <Loader /> :
