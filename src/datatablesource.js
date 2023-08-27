@@ -16,23 +16,7 @@ export const userColumns = [
   {
     field: "email",
     headerName: "Email",
-    width: 230,
-  },
-
-  {
-    field: "country",
-    headerName: "Country",
-    width: 100,
-  },
-  {
-    field: "city",
-    headerName: "City",
-    width: 100,
-  },
-  {
-    field: "phone",
-    headerName: "Phone",
-    width: 100,
+    width: 250,
   },
 ];
 

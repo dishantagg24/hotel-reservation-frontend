@@ -2,12 +2,13 @@ import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
 import { Loader } from "../../components/loader/loader";
+import { SearchContext } from "../../context/SearchContext";
 
 const List = () => {
   const location = useLocation();
@@ -17,12 +18,17 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const { dispatch } = useContext(SearchContext);
+  const { data, loading, reFetch } = useFetch(`hotels/?city=${destination}&min=${min || 0}&max=${max || 999}`)
 
-  const { data, loading, error, refetch } = useFetch(`hotels/?city=${destination}&min=${min || 0}&max=${max || 999}`)
 
+  const handleChange = (e) => {
+    setOptions({ ...options, [e.target.id]: e.target.value });
+    dispatch({ type: "UPDATE_OPTIONS", payload: { ...options, [e.target.id]: e.target.value } });
+  }
 
   const handleClick = () => {
-    refetch();
+    reFetch();
   }
 
   return (
@@ -35,7 +41,7 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} type="text" onChange={(e) => setDestination(e.target.value)} />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -73,6 +79,8 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.adult}
+                    id="adult"
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -82,6 +90,8 @@ const List = () => {
                     min={0}
                     className="lsOptionInput"
                     placeholder={options.children}
+                    id="children"
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -91,6 +101,8 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.room}
+                    id="room"
+                    onChange={handleChange}
                   />
                 </div>
               </div>

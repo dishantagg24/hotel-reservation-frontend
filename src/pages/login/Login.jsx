@@ -64,6 +64,7 @@ const Login = ({ setOpenLoginModal, setOpenAdminLoginModal }) => {
                     />
                     <div className="login">
                         <div className="lContainer">
+                            {setOpenAdminLoginModal && <h2 style={{ margin: 0 }}>Admin Login</h2>}
                             <input type="text" placeholder="username" id="username" onChange={handleChange} className="lInput" />
                             <input type="password" placeholder="password" id="password" onChange={handleChange} className="lInput" />
                             <button disabled={loading} onClick={handleClick} className="lButton">Login</button>

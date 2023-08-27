@@ -7,10 +7,10 @@ import "./admin.css";
 const Admin = () => {
     return (
 
-        <div className="sidebar">
+        <div>
             <div className="top">
                 <Link to="/admin" style={{ textDecoration: "none" }}>
-                    <span className="logo">lamadmin</span>
+                    <span className="logo">HHadmin</span>
                 </Link>
             </div>
             <hr />

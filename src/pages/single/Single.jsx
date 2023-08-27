@@ -46,7 +46,7 @@ const Single = () => {
                     <div className="top-right">
                         <p>Price: ${cheapestPrice}</p>
                         <p>{desc}</p>
-                        <p>No. of Rooms: {rooms}</p>
+                        <p>No. of Rooms: {rooms.length}</p>
                         <p>Distance: {distance}m from center</p>
                         <p>Featured: {featured ? 'Yes' : 'No'}</p>
                     </div>

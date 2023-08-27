@@ -1,9 +1,10 @@
 import useFetch from "../../hooks/useFetch";
 import { Loader } from "../loader/loader";
+import StarRateIcon from '@mui/icons-material/StarRate';
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
-  const { loading, data, error } = useFetch("hotels?featured=true&limit=4");
+  const { loading, data } = useFetch("hotels?featured=true&limit=3");
   return (
     <div className="fp">
       {loading ? <Loader /> : <>
@@ -19,7 +20,10 @@ const FeaturedProperties = () => {
             <span className="fpPrice">Starting from ${item.cheapestPrice}</span>
             {item.rating &&
               <div className="fpRating">
-                <button>{item.rating}</button>
+                <div className="rating-container">
+                  <button className="rating">{item.rating}</button>
+                  <StarRateIcon style={{ color: "#febb02" }} />
+                </div>
                 <span>Excellent</span>
               </div>
             }

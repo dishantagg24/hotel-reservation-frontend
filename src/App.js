@@ -13,6 +13,9 @@ import { AuthContext } from "./context/AuthContext";
 import AdminList from "./pages/adminList/AdminList";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import Single from "./pages/single/Single";
+import NewHotel from "./pages/newHotel/NewHotel";
+import NewRoom from "./pages/newRoom/NewRoom";
+import New from "./pages/new/New";
 
 function App() {
 
@@ -20,7 +23,6 @@ function App() {
     const { user } = useContext(AuthContext);
 
     if (user && !user.isAdmin) {
-      console.log(user);
       return <Navigate to="/" />;
     }
 
@@ -51,14 +53,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-            path="new"
-            element={
-              <ProtectedRoute>
-                <New inputs={userInputs} title="Add New User" />
-              </ProtectedRoute>
-            }
-          /> */}
+            <Route
+              path="new"
+              element={
+                <ProtectedRoute>
+                  <New />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           <Route path="hotels">
             <Route
@@ -77,14 +79,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-            path="new"
-            element={
-              <ProtectedRoute>
-                <NewHotel />
-              </ProtectedRoute>
-            }
-          /> */}
+            <Route
+              path="new"
+              element={
+                <ProtectedRoute>
+                  <NewHotel />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           <Route path="rooms">
             <Route
@@ -95,14 +97,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-            path="new"
-            element={
-              <ProtectedRoute>
-                <NewRoom />
-              </ProtectedRoute>
-            }
-          /> */}
+            <Route
+              path="new"
+              element={
+                <ProtectedRoute>
+                  <NewRoom />
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Route>
       </Routes>

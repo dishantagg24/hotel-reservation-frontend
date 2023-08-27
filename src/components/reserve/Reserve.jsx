@@ -8,7 +8,7 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Reserve = ({ setOpen, hotelId }) => {
+const Reserve = ({ setOpenModal, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
@@ -61,7 +61,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           return res.data;
         })
       );
-      setOpen(false);
+      setOpenModal(false);
       navigate("/");
     } catch (err) { }
   };
@@ -71,7 +71,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         <FontAwesomeIcon
           icon={faCircleXmark}
           className="rClose"
-          onClick={() => setOpen(false)}
+          onClick={() => setOpenModal(false)}
         />
         <span>Select your rooms:</span>
         {data.map((item) => (

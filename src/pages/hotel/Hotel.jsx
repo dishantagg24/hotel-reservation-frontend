@@ -11,7 +11,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
@@ -21,26 +21,24 @@ import { Loader } from "../../components/loader/loader";
 
 const Hotel = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
-  const { loading, data, error } = useFetch(`/hotels/find/${id}`)
-
+  const { loading, data } = useFetch(`/hotels/find/${id}`)
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dayDifference(dates[0]?.endDate, dates[0]?.startDate);
 
   const handleClick = () => {
     if (user) {
@@ -86,7 +84,7 @@ const Hotel = () => {
                 onClick={() => handleMove("l")}
               />
               <div className="sliderWrapper">
-                <img src={data.photos[slideNumber]} alt="" className="sliderImg" />
+                <img src={data?.photos[slideNumber]} alt="" className="sliderImg" />
               </div>
               <FontAwesomeIcon
                 icon={faCircleArrowRight}
@@ -96,7 +94,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -144,7 +142,7 @@ const Hotel = () => {
           <Footer />
         </div>
       }
-      {openModal && <Reserve setOpen={setOpen} hotelId={id} />}
+      {openModal && <Reserve setOpenModal={setOpenModal} hotelId={id} />}
       {openLoginModal && <Login setOpenLoginModal={setOpenLoginModal} />}
     </div>
   );

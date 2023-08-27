@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./searchItem.css";
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 const SearchItem = ({ item }) => {
   return (
@@ -28,7 +29,10 @@ const SearchItem = ({ item }) => {
         {item.rating &&
           <div className="siRating">
             <span>Excellent</span>
-            <button>{item.rating}</button>
+            <div className="rating-container-search">
+              <button className="rating-search">{item.rating}</button>
+              <StarRateIcon style={{ color: "#febb02" }} />
+            </div>
           </div>
         }
         <div className="siDetailTexts">
