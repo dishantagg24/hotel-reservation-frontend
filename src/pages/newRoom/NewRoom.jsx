@@ -32,7 +32,7 @@ const NewRoom = () => {
     <div className="new">
       <div className="newContainer">
         <div className="top">
-          <h1 style={{ margin: "0 auto" }}>Add New Hotel</h1>
+          <h1 style={{ margin: "0 auto" }}>Add New Room</h1>
         </div>
         <div className="bottom">
           <div className="right">
