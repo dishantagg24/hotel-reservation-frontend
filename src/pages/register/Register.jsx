@@ -14,7 +14,7 @@ const Register = ({ setOpenRegisterModal }) => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/auth/register', credentials);
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, credentials);
             setOpenRegisterModal(false);
             navigate('/');
         } catch (error) {

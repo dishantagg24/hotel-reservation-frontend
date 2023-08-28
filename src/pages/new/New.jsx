@@ -14,7 +14,7 @@ const New = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/auth/register", info);
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, info);
       nav('/admin');
     } catch (err) {
       console.log(err);
